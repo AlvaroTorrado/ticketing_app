@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Configurar MFA{% endblock %}
+{% block content %}
+<h3>Configurar Autenticación en Dos Pasos</h3>
+<p>Escanea el siguiente código QR con tu app de autenticación (Google Authenticator, Authy, etc.):</p>
+<img src="data:image/png;base64,{{ qr_b64 }}" alt="QR" class="mb-3">
+<form method="POST">
+    <div class="mb-3">
+        <label for="token">Introduce el código de 6 dígitos:</label>
+        <input type="text" name="token" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Confirmar MFA</button>
+</form>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Crear Ticket{% endblock %}
+{% block content %}
+<h2>Crear nuevo ticket</h2>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <div class="mb-3">
+        {{ form.title.label }} {{ form.title(class="form-control") }}
+    </div>
+    <div class="mb-3">
+        {{ form.description.label }} {{ form.description(class="form-control") }}
+    </div>
+    {{ form.submit(class="btn btn-success") }}
+    <a href="{{ url_for('main.dashboard') }}" class="btn btn-outline-warning btn-lg mt-3">Volver al panel</a>
+</form>
+{% endblock %}

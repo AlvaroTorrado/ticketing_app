@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %}Historial de Cambios{% endblock %}
+{% block content %}
+<h2>Historial de Cambios de Tickets</h2>
+<a href="{{ url_for('main.dashboard') }}" class="btn btn-secondary mb-3">← Volver al panel</a>
+<a href="{{ url_for('main.export_ticket_history') }}" class="btn btn-outline-success mb-3">Exportar a CSV</a>
+<a href="{{ url_for('main.export_ticket_history_pdf') }}" class="btn btn-outline-danger mb-3">Exportar a PDF</a>
+
+<form method="GET" class="row g-3 mb-4">
+    <div class="col-md-5">
+        <label for="ticket_id" class="form-label">Filtrar por Ticket</label>
+        <select name="ticket_id" id="ticket_id" class="form-select">
+            <option value="">Todos</option>
+            {% for t in tickets %}
+                <option value="{{ t.id }}" {% if selected_ticket == t.id %}selected{% endif %}>{{ t.title }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="col-md-5">
+        <label for="user_id" class="form-label">Filtrar por Usuario</label>
+        <select name="user_id" id="user_id" class="form-select">
+            <option value="">Todos</option>
+            {% for u in users %}
+                <option value="{{ u.id }}" {% if selected_user == u.id %}selected{% endif %}>{{ u.username }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="col-md-2 align-self-end">
+        <button type="submit" class="btn btn-primary w-100">Filtrar</button>
+    </div>
+</form>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Fecha</th>
+            <th>Ticket</th>
+            <th>De</th>
+            <th>A</th>
+            <th>Modificado por</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for entry in history %}
+        <tr>
+            <td>{{ entry.timestamp.strftime('%d/%m/%Y %H:%M') }}</td>
+            <td>{{ entry.ticket.title }}</td>
+            <td>{{ entry.old_status }}</td>
+            <td>{{ entry.new_status }}</td>
+            <td>{{ entry.changed_by.username }}</td>
+        </tr>
+        {% else %}
+        <tr><td colspan="5">No hay entradas en el historial con los filtros aplicados.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}Mis Tickets{% endblock %}
+{% block content %}
+<h2>Mis tickets asignados</h2>
+<ul class="list-group">
+    {% for ticket in tickets %}
+        <li class="list-group-item">
+            <strong>{{ ticket.title }}</strong><br>
+            {{ ticket.description }}<br>
+            <form method="POST" action="{{ url_for('main.update_ticket', ticket_id=ticket.id) }}" class="mt-2 mb-2">
+                <label for="status">Estado:</label>
+                <select name="status" class="form-select d-inline w-auto ms-2 me-2">
+                    <option value="pendiente" {% if ticket.status == 'pendiente' %}selected{% endif %}>Pendiente</option>
+                    <option value="abierto" {% if ticket.status == 'abierto' %}selected{% endif %}>Abierto</option>
+                    <option value="completado" {% if ticket.status == 'completado' %}selected{% endif %}>Completado</option>
+                </select>
+                <button type="submit" class="btn btn-sm btn-primary">Actualizar</button>
+            </form>
+
+            <details>
+                <summary>Ver historial</summary>
+                <ul>
+                    {% for h in ticket.history %}
+                        <li>{{ h.timestamp }}: <strong>{{ h.old_status }}</strong> → <strong>{{ h.new_status }}</strong> (por {{ h.changed_by.username }})</li>
+                    {% else %}
+                        <li>No hay historial.</li>
+                    {% endfor %}
+                </ul>
+            </details>
+        </li>
+    {% else %}
+        <li class="list-group-item">No tienes tickets asignados.</li>
+    {% endfor %}
+</ul>
+
+</ul>
+{% endblock %}

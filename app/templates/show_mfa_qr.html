@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %}Activación MFA{% endblock %}
+{% block content %}
+<h3>MFA activado para {{ username }}</h3>
+<p>Escanea este código QR con tu app de autenticación (como Google Authenticator):</p>
+<img src="data:image/png;base64,{{ qr_data }}" alt="Código QR" class="mb-3">
+<p>Después de escanearlo, el usuario deberá ingresar el código de 6 dígitos al iniciar sesión.</p>
+<a href="{{ url_for('main.dashboard') }}" class="btn btn-secondary">Volver al panel</a>
+{% endblock %}

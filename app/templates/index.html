@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}Inicio{% endblock %}
+{% block content %}
+
+<div class="text-center mt-5">
+    <h1 class="display-4">Sistema de Gestión de Incidencias</h1>
+    <p class="lead">Plataforma web para gestionar tickets técnicos de forma sencilla y organizada.</p>
+
+    <a href="{{ url_for('main.login') }}" class="btn btn-primary btn-lg mt-3">Iniciar sesión</a>
+    <a href="{{ url_for('main.register') }}" class="btn btn-outline-secondary btn-lg mt-3">Registrarse</a>
+    <a href="{{ url_for('main.dashboard') }}" class="btn btn-outline-warning btn-lg mt-3">Panel</a>
+</div>
+
+<hr class="my-5">
+
+<div class="row text-center">
+    <div class="col-md-4">
+        <div class="card border-primary mb-3">
+            <div class="card-body">
+                <h5 class="card-title">¿Qué es?</h5>
+                <p class="card-text">Es una herramienta web para registrar, asignar y resolver tickets de soporte técnico.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card border-success mb-3">
+            <div class="card-body">
+                <h5 class="card-title">¿Quién puede usarla?</h5>
+                <p class="card-text">Usuarios registrados con roles de <strong>Administrador</strong>, <strong>Manager</strong> o <strong>Usuario</strong>.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card border-info mb-3">
+            <div class="card-body">
+                <h5 class="card-title">¿Qué puedes hacer?</h5>
+                <p class="card-text">Desde asignar incidencias hasta actualizar estados y gestionar usuarios según tu rol.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

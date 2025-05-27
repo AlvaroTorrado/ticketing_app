@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Login{% endblock %}
+{% block content %}
+
+<h2>Iniciar sesión</h2>
+
+<form method="POST">
+    {{ form.hidden_tag() }}
+
+    {{ form.username.label }}
+    {{ form.username(class="form-control") }}
+
+    {{ form.password.label }}
+    {{ form.password(class="form-control") }}
+
+    {{ form.mfa_code.label }}
+    {{ form.mfa_code(class="form-control") }}
+
+    {{ form.submit(class="btn btn-primary mt-2") }}
+</form>
+
+<p>¿No tienes cuenta? <a href="{{ url_for('main.register') }}">Regístrate</a></p>
+
+{% endblock %}

@@ -1,0 +1,14 @@
+Flask>=2.0
+Flask-Login
+Flask-WTF
+Flask-Bcrypt
+Flask-SQLAlchemy
+WTForms
+email-validator
+mysql-connector-python
+PyMySQL
+pyotp
+qrcode
+fpdf
+pillow>=10.0.0
+gunicorn

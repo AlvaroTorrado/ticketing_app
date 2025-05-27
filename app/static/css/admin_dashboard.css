@@ -1,0 +1,74 @@
+/* Estilos generales */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h2 {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+/* Tabla personalizada */
+.table {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.table thead {
+    background-color: #f8f9fa;
+    font-weight: bold;
+}
+
+.table td, .table th {
+    vertical-align: middle !important;
+    padding: 0.75rem;
+}
+
+/* Botones */
+.btn {
+    border-radius: 20px;
+    padding: 0.3rem 1rem;
+    font-size: 0.9rem;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border: none;
+}
+
+.btn-outline-warning {
+    border-color: #ffc107;
+    color: #ffc107;
+}
+
+.btn-outline-success {
+    border-color: #198754;
+    color: #198754;
+}
+
+/* MFA badges */
+.mfa-status {
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: inline-block;
+}
+
+.mfa-ok {
+    background-color: #198754;
+    color: #fff;
+}
+
+.mfa-no {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.mfa-warn {
+    background-color: #ffc107;
+    color: #000;
+}
