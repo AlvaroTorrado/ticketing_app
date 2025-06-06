@@ -15,6 +15,7 @@
         <p class="card-text">Rol: <strong>{{ current_user.role }}</strong></p>
         <p class="card-text">ID de usuario: {{ current_user.id }}</p>
         <p class="card-text">Sesión iniciada correctamente.</p>
+        <a href="{{ url_for('main.cambiar_contrasena') }}" class="btn btn-outline-warning btn-lg mt-3">Cambiar contraseña</a>
         <a href="{{ url_for('main.dashboard') }}" class="btn btn-outline-warning btn-lg mt-3">Volver al panel</a>
     </div>
 </div>

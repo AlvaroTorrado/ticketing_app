@@ -8,3 +8,7 @@ Aplicación de gestión de tickets desarrollada con Flask, MySQL y Docker.
    
    git clone https://github.com/AlvaroTorrado/ticketing_app.git
    cd ticketing_app
+
+   docker compose down -v
+
+   docker compose up --build

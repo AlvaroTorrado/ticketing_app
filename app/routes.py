@@ -8,6 +8,7 @@ from wtforms import SubmitField
 from datetime import datetime
 import io
 import pyotp
+from app.forms import ChangePasswordForm
 
 class AssignTicketForm(FlaskForm):
     ticket_id = SelectField('Ticket', coerce=int)
@@ -513,5 +514,21 @@ def confirm_mfa():
             flash('❌ Código incorrecto. Inténtalo de nuevo.', 'danger')
 
     return render_template('confirm_mfa.html', qr_b64=qr_b64)
+
+
+@main.route('/cambiar_contrasena', methods=['GET', 'POST'])
+@login_required
+def cambiar_contrasena():
+    form = ChangePasswordForm()
+    if form.validate_on_submit():
+        if not current_user.check_password(form.old_password.data):
+            flash('Contraseña actual incorrecta', 'danger')
+        else:
+            current_user.set_password(form.new_password.data)
+            from app import db
+            db.session.commit()
+            flash('Contraseña cambiada correctamente', 'success')
+            return redirect(url_for('main.dashboard'))
+    return render_template('cambiar_contrasena.html', form=form)
 
 

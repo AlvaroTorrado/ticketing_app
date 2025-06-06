@@ -21,4 +21,11 @@ class CreateTicketForm(FlaskForm):
     title = StringField('Título', validators=[DataRequired()])
     description = TextAreaField('Descripción', validators=[DataRequired()])
     submit = SubmitField('Crear Ticket')
+    
+class ChangePasswordForm(FlaskForm):
+    old_password = PasswordField('Contraseña actual', validators=[DataRequired()])
+    new_password = PasswordField('Nueva contraseña', validators=[DataRequired()])
+    confirm_password = PasswordField('Confirmar nueva contraseña', validators=[
+        DataRequired(), EqualTo('new_password', message='Las contraseñas deben coincidir')])
+    submit = SubmitField('Cambiar contraseña')
 
