@@ -5,7 +5,13 @@
 <form method="POST">
     {{ form.hidden_tag() }}
     {{ form.username.label }} {{ form.username(class="form-control") }}<br>
-    {{ form.password.label }} {{ form.password(class="form-control") }}<br>
+    <div style="position: relative;">
+        {{ form.password.label }}
+        {{ form.password(class="form-control", type="password", id="register_password") }}
+        <span onclick="togglePassword('register_password', this)" style="position:absolute; right:10px; top:32px; cursor:pointer;">
+            👁️
+        </span>
+    </div><br>
     {{ form.confirm_password.label }} {{ form.confirm_password(class="form-control") }}<br>
     {{ form.submit(class="btn btn-success") }}
 </form>

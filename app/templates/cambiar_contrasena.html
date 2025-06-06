@@ -3,9 +3,41 @@
 <h2>Cambiar Contraseña</h2>
 <form method="POST">
     {{ form.hidden_tag() }}
-    <div>{{ form.old_password.label }} {{ form.old_password() }}</div>
-    <div>{{ form.new_password.label }} {{ form.new_password() }}</div>
-    <div>{{ form.confirm_password.label }} {{ form.confirm_password() }}</div>
-    <div>{{ form.submit() }}</div>
+
+    <div style="position: relative;">
+        {{ form.old_password.label }}
+        {{ form.old_password(class="form-control", type="password", id="old_password") }}
+        <span onclick="togglePassword('old_password', this)" style="position:absolute; right:10px; top:32px; cursor:pointer;">
+            👁️
+        </span>
+    </div>
+
+    <div style="position: relative;">
+        {{ form.new_password.label }}
+        {{ form.new_password(class="form-control", type="password", id="new_password") }}
+        <span onclick="togglePassword('new_password', this)" style="position:absolute; right:10px; top:32px; cursor:pointer;">
+            👁️
+        </span>
+    </div>
+
+    <div style="position: relative;">
+        {{ form.confirm_password.label }}
+        {{ form.confirm_password(class="form-control", type="password", id="confirm_password") }}
+        <span onclick="togglePassword('confirm_password', this)" style="position:absolute; right:10px; top:32px; cursor:pointer;">
+            👁️
+        </span>
+    </div>
+
+    <div>{{ form.submit(class="btn btn-primary") }}</div>
 </form>
+
+<!-- Script para alternar visibilidad de contraseñas -->
+<script>
+function togglePassword(fieldId, iconElement) {
+    const field = document.getElementById(fieldId);
+    const isPassword = field.type === 'password';
+    field.type = isPassword ? 'text' : 'password';
+    iconElement.textContent = isPassword ? '🕶️' : '👁️';
+}
+</script>
 {% endblock %}

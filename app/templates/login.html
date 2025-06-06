@@ -10,8 +10,13 @@
     {{ form.username.label }}
     {{ form.username(class="form-control") }}
 
-    {{ form.password.label }}
-    {{ form.password(class="form-control") }}
+    <div style="position: relative;">
+        {{ form.password.label }}
+        {{ form.password(class="form-control", type="password", id="login_password") }}
+        <span onclick="togglePassword('login_password', this)" style="position:absolute; right:10px; top:32px; cursor:pointer;">
+            👁️
+        </span>
+    </div>
 
     {{ form.mfa_code.label }}
     {{ form.mfa_code(class="form-control") }}
